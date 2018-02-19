@@ -1,0 +1,8 @@
+telnet 10.11.200.2 143
+try imap4 commands (LOGIN, SELECT, LIST, OK...)
+type : a login 'USER' 'PASS'
+
+telnet 10.11.200.2 80
+try http commands (OPTIONS, GET, HEAD...)
+
+
