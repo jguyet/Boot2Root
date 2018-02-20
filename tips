@@ -25,5 +25,6 @@ ISO
 
 explore iso : install squashfs-tools and use unsquash command to explore /casper/fylesystem.squashfs and find a password
 cat LOOKATME file to find login and password => lmezard:G!@6f4Eatau{sF"
+Read all files to find informations
 Connect on the VM
 
