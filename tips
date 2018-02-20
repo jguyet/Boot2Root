@@ -1,3 +1,5 @@
+NETWORK
+
 telnet 10.11.200.2 143
 try imap4 commands (LOGIN, SELECT, LIST, OK...)
 type : a login 'USER' 'PASS'
@@ -17,3 +19,8 @@ Maybe we must find a way to modify vsftpd.conf on the server.
 
 telnet 10.11.200.2 80
 type : GET /forum => forbidden access
+
+
+ISO
+
+explore iso : use squashfs-tools command to explore /casper/fylesystem.squashfs and find a password
