@@ -23,8 +23,22 @@ type : GET /forum => forbidden access
 
 ISO
 
+
+
 explore iso : install squashfs-tools and use unsquash command to explore /casper/fylesystem.squashfs and find a password
 cat LOOKATME file to find login and password => lmezard:G!@6f4Eatau{sF"
 Read all files to find informations
 Connect on the VM
+
+Fisrt challenge
+cd lmezard => cat fun : ustar type file => tar -xvf fun this create ft_fun directory
+cat *.pcap in toto and read code. 
+cat toto | grep return
+Find getme{1..12} functions to have password
+
+Second challenge
+go to thor directory
+cat README
+cat turtle and follow
+
 
