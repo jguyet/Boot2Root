@@ -1,25 +1,9 @@
-===== NETWORK =====
-
-telnet 10.11.200.2 143
-try imap4 commands (LOGIN, SELECT, LIST, OK...)
-type : a login 'USER' 'PASS'
-
-telnet 10.11.200.2 80
-try http commands (OPTIONS, GET, HEAD...)
-with OPTIONS command we have administrator login : webmaster
-need to find the password
-
 telnet 10.11.200.2 21
 type USER 'login'
 type PASS 'password'
 already tried with anonymous and anonymous@localhost default login and pass for ftp connection, got this error :
 500 OOPS: vsftpd: refusing to run with writable root inside chroot()
 500 OOPS: priv_sock_get_cmd
-Maybe we must find a way to modify /etc/vsftpd.conf on the server.
-
-telnet 10.11.200.2 80
-type : GET /forum => forbidden access
-
 
 ===== ISO =====
 
@@ -37,48 +21,6 @@ cat *.pcap in toto and read code.
 cat toto | grep return
 Find getme{1..12} functions to have password
 
-===== Second challenge =====
-
-go to thor directory
-cat README
-cat turtle and follow
-
-
-===== ZAZ CHALLENGE =====
-
-ssh zaz@10.11.200.2 
-password : SLASH (MD5)=> 646da671ca01bb5d84dbb5fb2238dc8e
-
-create .c file with .viminfo code :
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
-int main(int argc, char *argv[]) 
-{
-	    char *ptr;
-	    if(argc < 3) {
-	        printf("Usage: %s <environment var> <target program name>\n", argv[0]);
-	        exit(0);
-	    }
-	    ptr = getenv(argv[1]); /* Get env var location. */
-	    ptr += (strlen(argv[0]) - strlen(argv[2]))*2; /* Adjust for program name. */
-		printf("%s will be at %p\n", argv[1], ptr);
-}
-
-compile it and use it to find $SHELL address.
-try to overflow puts() in exploit_me program
-
-===== DONE =====
-
-FORUM CHALLENGE
-
-On database, change admin password with lmezard password and connect with admin
-
-
-
-===== TO EXPLOIT =====
 
 10.11.200.2/webmail : squirrel 1.4.22 exploit
 phpmyadmin 3.4.10.1 : https://www.cvedetails.com/cve/CVE-2012-1902/
