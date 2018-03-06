@@ -1,1 +1,7 @@
-Utiliser unsquash-fs pour lire le contenu de l'iso et acceder directement au dernier challenge de ZAZ et devenir root.
+===== ISO =====
+
+
+explore iso : installer squashfs-tools et utiliser la commande unsquash pour explorer /casper/fylesystem.squashfs
+Read all files to find informations
+cat le fichier LOOKATME/password pour trouver login et password pour se connecter a la VM Boot2Root
+

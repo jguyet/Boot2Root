@@ -1,0 +1,9 @@
+telnet 10.11.200.2 21
+type USER 'login'
+type PASS 'password'
+already tried with anonymous and anonymous@localhost default login and pass for ftp connection, got this error :
+500 OOPS: vsftpd: refusing to run with writable root inside chroot()
+500 OOPS: priv_sock_get_cmd
+
+En cherchant un peu sur internet avec cette erreur on tombe sur le script autoroot pour tester toutes les failles disponibles sur la version utilise
+
