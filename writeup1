@@ -565,7 +565,7 @@ je peux voir la valeur retournée par cette fonction, apres quelques tests avec 
 │           0x08048d93      5d             pop ebp
 └           0x08048d94      c3             ret
 ici une chaine est attendue, elle doit mesurer precisement 6 caracteres. on voit qu'une transformation est appliqué a chacun des caracteres avant d'etre comparée a la chaine "giants"
-je test avec "qwerty" et un breakpoint apres la transformation `break *0x08048d7b` je peux ainsi print ma chaine: (gdb) x/s $eax 0xbffff700:	 "shareb" , un autre test avec "qqqqqq" donne "ssssss" donc la position n'influence pas la transformation apres quelques tests je vois que `opekma` donne l'attendu "giants" .... ca match avec le hint qui attendait un `o` en premiere lettre, question suivante!
+je test avec "qwerty" et un breakpoint apres la transformation `break *0x08048d7b` je peux ainsi print ma chaine: (gdb) x/s $eax 0xbffff700:	 "shareb" , un autre test avec "qqqqqq" donne "ssssss" donc la position n'influence pas la transformation apres quelques tests je vois que `opekma` donne l'attendu "giants" tout comme `opekmq` .... ca match avec le hint qui attendait un `o` en premiere lettre, question suivante!
 
 
 #########
@@ -732,7 +732,7 @@ SLASH -MD5-> 646da671ca01bb5d84dbb5fb2238dc8e
 // #############################################################################
 
 
-un fichier exploit_me est present apartenant a root et des droits bizarres -rwsr-s---
+un fichier exploit_me est present apartenant a root:zaz et des droits particulier -rwsr-s--- les setuid et setgid permettant a l'utilisateur zaz d'exec ce bianaire.
 lexecution sans parametre ne donne rien alors qu'executé avec un parametre il le print sur la sortie
 
 zaz@BornToSecHackMe:~$ ./exploit_me `python -c 'print "A" *135'`
